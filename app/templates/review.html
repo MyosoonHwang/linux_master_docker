@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="space-y-6 max-w-4xl mx-auto pb-20">
+    <h2 class="text-3xl font-black text-error mb-8">🚫 나의 오답 저장소</h2>
+    
+    {% for w in wrongs %}
+    <div class="card bg-base-200 shadow-xl border-l-8 border-error">
+        <div class="card-body">
+            <h3 class="text-xl font-bold mb-2">Q. {{ w.content }}</h3>
+            <p class="text-lg opacity-70">
+                나의 답: <span class="text-error font-bold">{{ w.user_answer }}</span>번 / 
+                정답: <span class="text-success font-bold">{{ w.correct_answer }}</span>번
+            </p>
+            
+            <div id="ai-explanation-{{ w.id }}" class="mt-4 p-4 bg-base-300 rounded-lg hidden">
+                <span class="loading loading-spinner loading-md text-primary hidden" id="spinner-{{ w.id }}"></span>
+                <p id="text-{{ w.id }}" class="font-medium text-primary"></p>
+            </div>
+
+            <div class="card-actions justify-end mt-4">
+                <button onclick="fetchExplanation('{{ w.id }}')" class="btn btn-primary btn-sm">
+                    🤖 AI 맞춤 해설 보기
+                </button>
+                <a href="https://www.youtube.com/results?search_query=리눅스+마스터+2급+{{ w.concept }}" 
+                   target="_blank" class="btn btn-error btn-sm">📺 관련 영상 학습</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+async function fetchExplanation(wrongId) {
+    const box = document.getElementById(`ai-explanation-${wrongId}`);
+    const spinner = document.getElementById(`spinner-${wrongId}`);
+    const textBox = document.getElementById(`text-${wrongId}`);
+    
+    box.classList.remove('hidden');
+    textBox.innerText = '';
+    spinner.classList.remove('hidden');
+
+    try {
+        const response = await fetch(`/api/explain/${wrongId}`, { method: 'POST' });
+        const data = await response.json();
+        
+        spinner.classList.add('hidden');
+        textBox.innerText = data.explanation;
+    } catch (error) {
+        spinner.classList.add('hidden');
+        textBox.innerText = "해설을 불러오는 중 오류가 발생했습니다.";
+    }
+}
+</script>
+{% endblock %}

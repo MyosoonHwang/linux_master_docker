@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dracula"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinuxMaster AI Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+        body { font-family: "Pretendard", sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-base-300">
+    <div class="navbar bg-base-100 shadow-xl border-b border-primary/20 mb-10">
+        <div class="flex-1">
+            <a class="btn btn-ghost text-xl font-black text-primary" href="/">🐧 LINUX_MASTER.AI</a>
+        </div>
+        <div class="flex-none">
+            <a href="/review" class="btn btn-outline btn-secondary btn-sm">오답 저장소</a>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 max-w-4xl">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content mt-20">
+        <aside>
+            <p>© 2026 Linux Master AI Guide - Soongsil Univ. CS</p>
+        </aside>
+    </footer>
+</body>
+</html>

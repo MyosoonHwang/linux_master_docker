@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card p-5 text-center mb-4">
+    <h2 class="display-4">결과: {{ score }} / {{ total }}</h2>
+    <p class="lead">오늘도 고생하셨습니다! 틀린 문제를 복습해 보세요.</p>
+    <a href="/" class="btn btn-primary">홈으로 돌아가기</a>
+</div>
+
+<h3 class="mb-3">❌ 오답 노트</h3>
+{% for q in wrongs %}
+<div class="card border-danger mb-3">
+    <div class="card-header bg-danger text-white">복습 필요</div>
+    <div class="card-body">
+        <h5 class="card-title">{{ q.content }}</h5>
+        <p class="card-text text-muted">정답: {{ q.answer }}번</p>
+        <div class="alert alert-secondary">
+            <strong>📖 관련 개념:</strong><br>
+            {{ q.concept }}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

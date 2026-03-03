@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-3xl mx-auto pb-20">
+    <h2 class="text-3xl font-black text-secondary mb-10">📝 리눅스 마스터 기출문제 풀이</h2>
+    
+    <form action="/submit" method="POST" class="space-y-8">
+        {% for q in questions %}
+        <div class="card bg-base-200 shadow-xl border-l-8 border-primary">
+            <div class="card-body">
+                <h3 class="text-xl font-bold mb-6">Q{{ loop.index }}. {{ q.content }}</h3>
+                <div class="grid gap-3">
+                    {% for choice in q.choices %}
+                    <label class="flex items-center gap-4 p-4 bg-base-300 rounded-xl cursor-pointer hover:bg-primary transition-all">
+                        <input type="radio" name="q_{{ q.id }}" value="{{ loop.index }}" class="radio radio-primary" required>
+                        <span class="text-lg">{{ loop.index }}. {{ choice }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn btn-primary btn-lg btn-block mt-10 shadow-2xl">제출 및 채점</button>
+    </form>
+</div>
+{% endblock %}
