@@ -7,7 +7,7 @@ genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
 def get_wrong_answer_explanation(question, correct_ans, user_ans):
     """사용자가 틀린 문제에 대해 명쾌한 해설을 제공합니다."""
-    model = genai.GenerativeModel('gemini-2.5-flash-lite')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
     prompt = f"""
     리눅스 마스터 2급 문제입니다.
