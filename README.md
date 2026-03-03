@@ -54,7 +54,8 @@ docker run -d -p 5000:5000 --name linux-app linux-master-app
 ```
 
 📁 프로젝트 구조 (Project Structure)
-Plaintext
+## 📁 프로젝트 구조 (Project Structure)
+```plaintext
 .
 ├── app/
 │   ├── models.py          # SQLAlchemy DB 모델 정의
@@ -67,6 +68,7 @@ Plaintext
 ├── requirements.txt       # 패키지 의존성 목록
 ├── seed_db.py             # 초기 데이터 삽입 스크립트
 └── run.py                 # 애플리케이션 엔트리 포인트
+```
 
 👤 Author
 MyosoonHwang - GitHub
