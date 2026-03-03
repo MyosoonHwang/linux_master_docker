@@ -32,7 +32,7 @@ AI 맞춤형 해설: Google Gemini 2.5 Flash-Lite 모델을 연동하여, 사용
 유튜브 연동 학습: 오답 개념과 관련된 유튜브 강의 검색 링크를 자동으로 생성하여 추가 학습을 돕습니다.
 
 ## 🛠 기술 스택 (Tech Stack)
-### Backend
+## Backend
 Language: Python 3.14.3
 
 Framework: Flask
@@ -43,7 +43,7 @@ Database: SQLite (Development) / MySQL (Production Ready)
 
 AI SDK: google-genai (Latest Version)
 
-#### Infrastructure
+## Infrastructure
 Container: Docker (python:3.14.3-slim)
 
 VCS: GitHub
