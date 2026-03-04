@@ -91,7 +91,7 @@ MyosoonHwang - GitHub
 
 ![image.png](image.png)
 
-# 트러블 슈팅
+# 트러블 슈팅 및 어려웠던 점
 ## 1. 배포 (Deployment)와 서비스 (Service)의 분리
 ### 문제: 처음 설계 구성대로 배포 진행했을 때,  Deployment를 배포하면 서비스 (Service)도 같이 생성될 줄 알았지만, 실제로는 그렇지 않았음.
 
@@ -113,7 +113,7 @@ MyosoonHwang - GitHub
 
 ### 해결: DB의 deployment.yaml 파일과 PVC의 yaml 파일에서 ** PVC의 이름과 DB의 claimName ** 이 서로 일치하도록 작성하여, DB가 PVC를 통해 영구 스토리지에 데이터를 저장할 수 있도록 구성.
 
-## 트러블슈팅 세션 4: L7 LB (LoadBalancer)와 게이트웨이 (Gateway), HTTPRoute 계층의 위치
+## 4. L7 LB (LoadBalancer)와 게이트웨이 (Gateway), HTTPRoute 계층의 위치
 ### 문제: L7 LB (LoadBalancer)와 게이트웨이 (Gateway), HTTPRoute 계층이 어디에 정확히 위치하는지 이해하기 어려웠음.
 
 ### 개념: 외부 트래픽을 처리하는 L7 로드밸런서는 클러스터 외부에 위치하며, 게이트웨이 컨트롤러와 연동되어 트래픽을 관리. 게이트웨이 리소스는 클러스터 내부에 위치하며, 외부 트래픽을 클러스터 내부의 서비스로 전달하는 구조. HTTPRoute 리소스는 게이트웨이 리소스 아래에 위치하며, 트래픽을 특정 서비스로 라우팅하는 규칙을 정의하는 구조.
