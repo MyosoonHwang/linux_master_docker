@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flask-config
+  namespace: wh
+data:
+  DB_USER: "root"
+  DB_NAME: "job_board_db"
+  DB_HOST: "db-service" # 중요: 쿠버네티스 DB 서비스 이름과 일치시켜야 함

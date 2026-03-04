@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: flask-httproute
+  namespace: wh
+spec:
+  parentRefs:
+  - name: flask-gateway
+    namespace: wh
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: flask-service
+      port: 80
